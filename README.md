@@ -86,6 +86,25 @@ To install a CPU-only Linux package, run:
 ```bash
 pip install mlx[cpu]
 ```
+## Build from local machine (without Metal Framework) 
+Clone this repo and `cd` the `mlx ` dir. 
+```bash
+git clone https://github.com/autumn-DL/mlx.git && cd mlx
+```
+Build without Metal Backend by CMake (If you need Metal, make sure your option `MLX_BUILD_METAL`  is `True`): 
+```bash
+cmake -S . -B build -DMLX_BUILD_METAL=False && cmake --build build -j  
+```
+With the Package Variables `-D` : 
+| Variable               | Description                         |
+|------------------------|-------------------------------------|
+| `MLX_FOUND`            | `True` if MLX is found              |
+| `MLX_INCLUDE_DIRS`     | Include directory                  |
+| `MLX_LIBRARIES`        | Libraries to link against          |
+| `MLX_CXX_FLAGS`        | Additional compiler flags          |
+| `MLX_BUILD_ACCELERATE` | `True` if MLX was built with Accelerate |
+| `MLX_BUILD_METAL`      | `True` if MLX was built with Metal |
+
 
 Checkout the
 [documentation](https://ml-explore.github.io/mlx/build/html/install.html#)
